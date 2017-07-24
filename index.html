@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+</head>
+<body>
+	<canvas width="600" height="400" id="cas" style="border: 1px solid black;"></canvas>
+</body>
+<script type="text/javascript">
+	var cas = document.getElementById('cas');
+	var ctx = cas.getContext('2d');
+	console.log(ctx);
+	ctx.lineWidth = 2.6;
+	
+	var paddingTop = 50,
+		paddingRight = 50,
+		paddingBottom = 50,
+		paddingLeft = 50;
+
+	var arrowHeight = 20,
+		arrowWidth = 8,
+		arrowH2 = 16;
+	//确定坐标原点
+	var x0 = paddingLeft;
+		y0 = cas.height - paddingBottom;
+	//绘制坐标线
+	ctx.moveTo(x0,paddingTop);
+	ctx.lineTo(x0,y0);
+	ctx.lineTo(cas.width - paddingRight,y0);
+	ctx.stroke();
+	//绘制箭头
+	ctx.beginPath();
+	ctx.moveTo(paddingLeft,paddingTop - 3);
+	ctx.lineTo(x0 - arrowWidth,paddingTop + arrowHeight);
+	ctx.moveTo(paddingLeft,paddingTop - 3);
+	ctx.lineTo(x0 + arrowWidth,paddingTop + arrowHeight);
+	ctx.lineTo(x0,paddingTop + arrowH2);
+	ctx.lineTo(x0 - arrowWidth,paddingTop + arrowHeight);
+
+	ctx.moveTo(cas.width - paddingRight + 3,y0);
+	ctx.lineTo(cas.width - paddingRight - arrowHeight,y0 - arrowWidth);
+	ctx.moveTo(cas.width - paddingRight + 3,y0);
+	ctx.lineTo(cas.width - paddingRight - arrowHeight,y0 + arrowWidth);
+	ctx.lineTo(cas.width - paddingRight - arrowH2,y0);
+	ctx.lineTo(cas.width - paddingRight - arrowHeight,y0 - arrowWidth);
+	//设置描边的颜色
+	// ctx.stroke();
+	//ctx.strokeStyle();
+	//设置填充颜色
+	// ctx.fillStyle = 'gray';
+	ctx.fill();
+
+	// 1.绘制坐标系
+	// 2.将点: ( 100, 200 ), ( 150, 130 ), ( 170, 300 ), ( 300, 100 ), ( 200, 150 )绘制到坐标轴中.并用线连接。
+
+	ctx.beginPath();
+	var dota = [{x:100,y:200},{x:150,y:130},{x:170,y:300},{x:300,y:100},{x:350,y:150}];
+	console.log(dota);
+	console.log(dota[0]);
+	console.log(dota[0].x);
+	console.log(dota[0].y);
+
+	ctx.moveTo(x0,y0);
+	for(var m = 0; m <= dota.length; m++){
+		ctx.lineTo(x0 + dota[m].x, y0 - dota[m].y);
+		ctx.stroke();
+	}
+	
+
+	// ctx.beginPath();
+	// // ctx.moveTo(x0,y0);
+	// ctx.moveTo(x0 + 100, y0 - 200);
+	// ctx.lineTo(x0 + 150, y0 - 130);
+	// ctx.lineTo(x0 + 170, y0 - 300);
+	// ctx.lineTo(x0 + 300, y0 - 100);
+	// ctx.lineTo(x0 + 200, y0 - 150);
+	// ctx.lineWidth = 1;
+	// ctx.strokeStyle = 'green';
+	// ctx.stroke();
+
+	// ctx.beginPath();
+	// ctx.moveTo(x0 + 100 - 3, y0 - 200 + 3);
+	// ctx.lineTo(x0 + 100 - 3, y0 - 200 - 3);
+	// ctx.lineTo(x0 + 100 + 3, y0 - 200 - 3);
+	// ctx.lineTo(x0 + 100 + 3, y0 - 200 + 3);
+	// ctx.closePath();
+	// ctx.moveTo(x0 + 150 - 3, y0 - 130 + 3);
+	// ctx.lineTo(x0 + 150 - 3, y0 - 130 - 3);
+	// ctx.lineTo(x0 + 150 + 3, y0 - 130 - 3);
+	// ctx.lineTo(x0 + 150 + 3, y0 - 130 + 3);
+	// ctx.closePath();
+	// ctx.moveTo(x0 + 170 - 3, y0 - 300 + 3);
+	// ctx.lineTo(x0 + 170 - 3, y0 - 300 - 3);
+	// ctx.lineTo(x0 + 170 + 3, y0 - 300 - 3);
+	// ctx.lineTo(x0 + 170 + 3, y0 - 300 + 3);
+	// ctx.closePath();
+	// ctx.moveTo(x0 + 300 - 3, y0 - 100 + 3);
+	// ctx.lineTo(x0 + 300 - 3, y0 - 100 - 3);
+	// ctx.lineTo(x0 + 300 + 3, y0 - 100 - 3);
+	// ctx.lineTo(x0 + 300 + 3, y0 - 100 + 3);
+	// ctx.closePath();
+	// ctx.moveTo(x0 + 200 - 3, y0 - 150 + 3);
+	// ctx.lineTo(x0 + 200 - 3, y0 - 150 - 3);
+	// ctx.lineTo(x0 + 200 + 3, y0 - 150 - 3);
+	// ctx.lineTo(x0 + 200 + 3, y0 - 150 + 3);
+	// ctx.closePath();
+
+	// ctx.fillStyle = 'red';
+	// ctx.fill();
+</script> 
+</html>
